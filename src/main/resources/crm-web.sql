@@ -6,3 +6,5 @@ create table clientes (
     idade INTEGER(2) NOT NULL,
     email VARCHAR(50) NULL
 );
+
+DROP TABLE clientes;
