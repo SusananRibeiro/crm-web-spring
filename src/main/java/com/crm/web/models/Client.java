@@ -1,60 +1,24 @@
 package com.crm.web.models;
+import jakarta.persistence.*;
+import lombok.Data;
+@Data // Não é do Spring, e sim do Lombok
+@Entity // é do jakarta, defini a estrutura que vai ser salva no banco de dados
+@Table (name = "clientes")//  é do jakarta,
 public class Client {
-    private int id; // id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    private String cpf; // cpf VARCHAR(11) NOT NULL,
-    private String primeiroNome; // primeiro_nome VARCHAR(50) NOT NULL,
-    private String sobrenome; // sobrenome VARCHAR(100) NOT NULL,
-    private int idade; // idade INTEGER(2) NOT NULL,
-    private String email; // email VARCHAR(50) NULL
+    @Id // para dizer que é uma PRIMARY KEY
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // está dizendo que o id é AUTO_INCREMENT
+    private int id;
+    @Column(length = 11) // dizer que é uma coluna com tamanho 11
+    private String cpf;
 
-    public Client() {
-    }
+    @Column(name = "primeiro_nome") // para dizer que o nome da coluna no banco de dados é "primeiro_nome"
+    private String primeiroNome;
+    @Column
+    private String sobrenome;
+    @Column // @Transient -> diz que esse atributo vai ser ignorado pelo hibernate
+    private int idade;
+    @Column
+    private String email;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getPrimeiroNome() {
-        return primeiroNome;
-    }
-
-    public void setPrimeiroNome(String primeiroNome) {
-        this.primeiroNome = primeiroNome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    // Não precisa gerar Gets e Sets, pois o "@Data" vai fazer isso
 }
