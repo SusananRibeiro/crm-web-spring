@@ -8,7 +8,6 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doReturn;
-
 public class ClientServiceTest {
 
     private static ClientService clientService;
